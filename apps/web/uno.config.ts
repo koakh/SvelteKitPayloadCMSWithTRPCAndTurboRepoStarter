@@ -39,5 +39,8 @@ export default defineConfig({
     presetIcons({ scale: 1.2 }),
     presetAttributify(),
   ],
-  transformers: [transformerDirectives(), transformerVariantGroup()],
+  transformers: [
+    transformerDirectives(),
+    transformerVariantGroup()
+  ],
 });

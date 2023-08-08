@@ -1,4 +1,8 @@
 {
+  // "unocss.root": "apps/web",
+  "files.exclude": {
+    "@otherFiles": true
+  },
   "cSpell.words": [
     "BUILDKIT",
     "clsx",
@@ -15,8 +19,5 @@
     "trpc",
     "turborepo",
     "unocss"
-  ],
-  "files.exclude": {
-    "@otherFiles": true
-  }
+  ]
 }

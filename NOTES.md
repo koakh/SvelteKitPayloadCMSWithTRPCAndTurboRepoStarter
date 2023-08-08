@@ -246,6 +246,21 @@ webpack compiled with 1 error
 
 seems that only appear in development ?????
 
+- [Module not found: Error: Can't resolve 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true' when using webpack-hot-middleware](https://stackoverflow.com/questions/52525337/module-not-found-error-cant-resolve-webpack-hot-middleware-clientpath-we)
+
+solution: I had a similar problem: deleting and re-installing `node_modules` fixed it in the end
+
+```shell
+$ rm node_modules -r
+$ rm apps/web/node_modules -r
+$ rm apps/web/node_modules -r
+$ pnpm i
+```
+
+now error dissapear
+
+## Fix for Docker PayloadCms run server
+
 FINAL! THE THING that work is, it MUST RUN from `/app/apps/server` else it don't encounter the `build/` files `index.html` for ex
 
 ```shell
@@ -423,3 +438,23 @@ exec /usr/local/bin/docker-entrypoint.sh: exec format error
 I'm able to work around it either by setting `DOCKER_DEFAULT_PLATFORM=linux/amd64` or by adding `--platform=linux/amd64` to the `FROM` line of the relevant `Dockerfile`. ex `FROM --platform=linux/amd64 mysql:5.7`
 
 final: builded `arm64` image on oracle server, with same `pnpm docker:build` as used in `amd64`
+
+## Fiux UnoCSS in TurboRepo find config file
+
+- [unocss](https://github.com/unocss/unocss)
+- [VS Code Extension](https://unocss.dev/integrations/vscode)
+
+```shell
+$ pnpm dev
+@apps/web:dev: 4:14:58 PM [vite-plugin-svelte] /src/routes/+page.svelte:26:8 Attributes should not contain ':' characters to prevent ambiguity with Svelte directives
+@apps/web:dev: 4:14:58 PM [vite-plugin-svelte] /src/routes/+page.svelte:38:8 Attributes should not contain ':' characters to prevent ambiguity with Svelte directives
+```
+
+<!-- Unocss intellisense doesn't work when using icons unless you download the icon pack -->
+<!-- https://github.com/unocss/unocss/tree/main/packages/preset-icons -->
+
+removed, this already is installed with `unocss`
+
+```shell
+$ pnpm add -D @unocss/preset-icons --filter=@apps/web
+```
