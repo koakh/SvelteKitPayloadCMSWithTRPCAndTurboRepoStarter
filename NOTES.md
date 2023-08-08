@@ -439,10 +439,12 @@ I'm able to work around it either by setting `DOCKER_DEFAULT_PLATFORM=linux/amd6
 
 final: builded `arm64` image on oracle server, with same `pnpm docker:build` as used in `amd64`
 
-## Fiux UnoCSS in TurboRepo find config file
+## Fix UnoCSS VsCode Extension with Svelte 4.x.x
 
 - [unocss](https://github.com/unocss/unocss)
 - [VS Code Extension](https://unocss.dev/integrations/vscode)
+
+![image](assets/2023-08-08-19-58-53.png)
 
 ```shell
 $ pnpm dev
@@ -450,11 +452,20 @@ $ pnpm dev
 @apps/web:dev: 4:14:58 PM [vite-plugin-svelte] /src/routes/+page.svelte:38:8 Attributes should not contain ':' characters to prevent ambiguity with Svelte directives
 ```
 
-<!-- Unocss intellisense doesn't work when using icons unless you download the icon pack -->
-<!-- https://github.com/unocss/unocss/tree/main/packages/preset-icons -->
+the problem occurs in versions `4.x.x` to fix use the latest `3.x.x` version `^3.59.1`, and it starts to work has expected
 
-removed, this already is installed with `unocss`
+```json
+{
+  "devDependencies": {
+    "svelte": "^4.1.2"
+  }
+}
+```
 
-```shell
-$ pnpm add -D @unocss/preset-icons --filter=@apps/web
+```json
+{
+  "devDependencies": {
+    "svelte": "^3.59.1"
+  }
+}
 ```
