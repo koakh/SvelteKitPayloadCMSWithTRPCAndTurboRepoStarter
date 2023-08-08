@@ -1,0 +1,16 @@
+**/node_modules
+.git
+.vscode/
+.env
+.env.example
+.eslintignore
+.eslintrc.cjs
+.prettierignore
+.prettierrc
+backup.sh
+LICENSE
+NOTES.md
+README.md
+TODO
+.dockerignore
+volumes

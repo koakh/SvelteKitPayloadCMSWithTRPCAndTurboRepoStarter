@@ -4,6 +4,10 @@ import unocss from "unocss/vite";
 
 const config: UserConfig = {
   plugins: [unocss(), sveltekit()],
+  server: {
+    port: 3080,
+    host: '0.0.0.0'
+  }
 };
 
 export default config;

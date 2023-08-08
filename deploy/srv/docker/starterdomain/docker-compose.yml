@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  web:
+    image: koakh/koakh-sveltekit-payloadcms-trpc-turborepo-starter-web
+    container_name: web
+    restart: always
+    ports:
+      - 3080:3000
+    environment:
+      PUBLIC_PORT: 3000
+      # cors
+      PUBLIC_PAYLOAD_SERVER_URL: https://admin.starterdomain.org
+    networks:
+      - app_network
+
+  server:
+    image: koakh/koakh-sveltekit-payloadcms-trpc-turborepo-starter-server
+    container_name: server
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 4080:4000
+    environment:
+      PAYLOAD_SECRET: "PAYLOAD_SECRET_STUB"
+      MONGO_URL: "mongodb://db:27017/starterdomain"
+      # cors
+      CLIENT_EXTRA_CORS: https://starterdomain.org
+      PUBLIC_PAYLOAD_SERVER_URL: https://admin.starterdomain.org
+      PAYLOAD_PUBLIC_SERVER_URL: https://admin.starterdomain.org
+    networks:
+      - app_network
+
+  db:
+    image: mongo:4.2
+    container_name: db
+    # ports:
+    #   - "27017:27017/tcp"
+    restart: always
+    volumes:
+      - ./volumes/data/db:/data/db
+    command:
+      - --storageEngine=wiredTiger
+    logging:
+      driver: none
+    networks:
+      - app_network
+
+# Define a network with `docker network create app_network`, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  app_network:
+    external: true

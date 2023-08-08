@@ -1,17 +1,27 @@
 {
   "private": true,
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=7.0.0"
+  },
   "scripts": {
     "build:no-logs": "dotenv -- turbo run build --output-logs=errors-only",
     "build": "dotenv -- turbo run build",
-    "build:win": "dotenv -- turbo run build:win",
-    "dev": "dotenv -- turbo run dev --parallel",
-    "dev:web": "dotenv -- turbo run dev --filter=web",
-    "dev:server": "dotenv -- turbo run dev --filter=server",
+    "dev": "dotenv -- turbo run dev --parallel --no-daemon",
+    "dev:web": "dotenv -- turbo run dev --filter=@apps/web",
+    "dev:server": "dotenv -- turbo run dev --filter=@apps/server",
     "preview": "dotenv -- turbo run preview --parallel",
-    "start:server": "dotenv -- turbo run start --filter=server",
-    "start:server-win": "dotenv -- turbo run start:win --filter=server",
+    "start:server": "dotenv -- turbo run start --filter=@apps/server",
     "lint": "turbo run lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "docker:build": "COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yml build",
+    "docker:build:web": "COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yml build web",
+    "docker:build:server": "COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yml build server",
+    "docker:run:web": "dotenv -- turbo run docker:run --filter=@apps/web",
+    "docker:run:server": "dotenv -- turbo run docker:run --filter=@apps/server",
+    "docker:stack:up": "docker-compose up -d",
+    "docker:stack:down": "docker-compose down",
+    "docker:push": "./dockerpush.sh"
   },
   "devDependencies": {
     "@apps/web": "workspace:*",

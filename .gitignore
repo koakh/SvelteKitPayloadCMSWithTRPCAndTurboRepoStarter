@@ -45,3 +45,14 @@ package
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
+
+.bak/*.tgz
+.dbbak/*.tgz
+@otherFiles
+out
+volumes
+apps/server/media
+apps/web/vite.config.ts.timestamp-*.mjs
+
+!.bak/exclude.tag
+!.dbbak/exclude.tag

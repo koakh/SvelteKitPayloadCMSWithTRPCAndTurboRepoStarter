@@ -1,0 +1,22 @@
+{
+  "cSpell.words": [
+    "BUILDKIT",
+    "clsx",
+    "copyclient",
+    "copyfiles",
+    "dockerpush",
+    "iconify",
+    "koakh",
+    "nonturbo",
+    "payloadcms",
+    "precompress",
+    "superjson",
+    "sveltekit",
+    "trpc",
+    "turborepo",
+    "unocss"
+  ],
+  "files.exclude": {
+    "@otherFiles": true
+  }
+}

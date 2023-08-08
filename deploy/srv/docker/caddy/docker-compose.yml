@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  caddy:
+    image: caddy:2.4.3
+    domainname: starterdomain.org
+    hostname: caddy
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./volumes/caddy/data:/data
+      - ./volumes/caddy/config:/config
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    external: true
