@@ -2,18 +2,15 @@ import { error } from '@sveltejs/kit';
 import { z } from 'zod';
 import data from './data.json';
 
-// TODO:
 // https://www.reddit.com/r/sveltejs/comments/116k1fw/filter_supabasesveltekit_page/
 // Better to do with a GET form, the load data does it for both cases
 
 const validationSchema = z.object({
   s: z.optional(z.string().trim().min(3)),
-  // x: z.optional(z.string().trim().min(3)),
 });
 
 export const load = async ({ url }) => {
   const s = url.searchParams.get('s');
-  // const x = url.searchParams.get('s');
   const formData = { s };
   // console.log(`url: [${JSON.stringify(url.searchParams.get('s'), undefined, 2)}]`);
   // console.log(`url.searchParams: [${JSON.stringify(url.search, undefined, 2)}]`);
@@ -31,18 +28,11 @@ export const load = async ({ url }) => {
             message: error.message
           };
         });
-
-        // TODO: add to utils/helpers
-        // console.log(`errors: [${JSON.stringify(errors, undefined, 2)}]`);
-        const convertErrorsArrayToObject = (errors: { field: string, message: string }[]) => {
-          // https://stackoverflow.com/a/49247635
-          var mapped = errors.map(item => ({ [item.field]: item.message }));
-          return Object.assign({}, ...mapped);
-        }
+        // console.log(`errors: [${JSON.stringify(errors, undefined, 2)}]`);        
         return { products: [], errors };
       }
       // override filter data
-      console.log(`data: [${JSON.stringify(data, undefined, 2)}]`);
+      // console.log(`data: [${JSON.stringify(data, undefined, 2)}]`);
       filtered = data.products.filter((e) => e.title.toLowerCase().includes(s.toLowerCase()));
     }
     return { products: filtered };

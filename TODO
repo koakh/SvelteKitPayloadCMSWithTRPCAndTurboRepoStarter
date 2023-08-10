@@ -20,8 +20,7 @@ Projet:
   ✔ fork sk project and create a new one in my github @done(23-08-08 20:02)
   ✔ Fix UnoCSS VsCode Extension with Svelte 4.x.x @done(23-08-08 20:03)
   ☐ move all notes related to dawnvalley and oracle server to dawnvalley project
-  ☐ How can I get autocomplete / intellisense on custom shortcuts in UnoCSS with SvelteKit? 
+  ☐ @low How can I get autocomplete / intellisense on custom shortcuts in UnoCSS with SvelteKit? 
     https://stackoverflow.com/questions/75748861/how-can-i-get-autocomplete-intellisense-on-custom-shortcuts-in-unocss-with-sve
-  ☐ improve search and search pages, beutify
-  ☐ fix {form} types
+  ✔ improve search and search pages, beutify @done(23-08-10 22:16)
   ☐ check whole web project and do some clean up, clean up todos to

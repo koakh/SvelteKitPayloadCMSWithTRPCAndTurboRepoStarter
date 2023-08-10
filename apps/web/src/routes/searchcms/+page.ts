@@ -1,12 +1,10 @@
 import { error } from '@sveltejs/kit';
 import { z } from 'zod';
 import { client } from '$lib/trpc';
-import type { Media } from '@apps/server';
+import type { Media } from '@apps/server/src/main';
 
 const validationSchema = z.object({
-  s: z.string().trim().min(0).nullable(),
-  // s: z.string().trim().min(3).optional().nullable(),
-  // x: z.string().trim().min(3).optional(),
+  s: z.optional(z.string().trim().min(3)),
 });
 
 export const load = async ({ url }) => {
@@ -30,13 +28,7 @@ export const load = async ({ url }) => {
             message: error.message
           };
         });
-        // TODO: add to utils/helpers
         // console.log(`errors: [${JSON.stringify(errors, undefined, 2)}]`);
-        const convertErrorsArrayToObject = (errors: { field: string, message: string }[]) => {
-          // https://stackoverflow.com/a/49247635
-          var mapped = errors.map(item => ({ [item.field]: item.message }));
-          return Object.assign({}, ...mapped);
-        }
         return { docs: [], errors };
       }
       // override filter data
