@@ -2,7 +2,7 @@ import payload from 'payload';
 import user from './routes/user.mts';
 import { publicProcedure } from './procedures.mts';
 import { router } from './procedures.mts';
-import type { Media, Post, PaginatedDocs } from '../main';
+import type { Media, Post, PaginatedDocs } from '..';
 import { z } from 'zod';
 
 /* 
