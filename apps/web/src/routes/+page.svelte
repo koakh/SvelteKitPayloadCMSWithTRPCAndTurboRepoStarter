@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <title>Sveltekit & Unocss template</title>
+  <title>SvelteKitPayloadCMSWithTRPCAndTurboRepoStarter</title>
 </svelte:head>
 
 <div transition-400 flex h-full select-none text-center>
@@ -59,6 +59,8 @@
       Load tRPC Test
     </button>
     <p op-30>greeting: {greeting}</p>
+    <a href='/search'>/search</a>
+    <a href='/searchcms'>/searchcms</a>
   </div>
 </div>
 
