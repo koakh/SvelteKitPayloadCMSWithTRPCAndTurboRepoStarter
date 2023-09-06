@@ -5,7 +5,6 @@ Everything you need to build a Svelte project, powered by [`create-svelte`](http
 | Technology  | Usage             |
 | ----------- | ----------------- |
 | [Sveltekit] | Svelte Framework  |
-| [UnoCSS]    | Atomic Css engine |
 
 ## Creating a project
 
@@ -43,5 +42,4 @@ You can preview the production build with `yarn preview`.
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 
 [sveltekit]: https://kit.svelte.dev
-[unocss]: https://github.com/unocss/unocss
 [vanilla extract]: https://vanilla-extract.style

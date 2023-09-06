@@ -469,3 +469,49 @@ the problem occurs in versions `4.x.x` to fix use the latest `3.x.x` version `^3
   }
 }
 ```
+
+## Install Skeleton UI
+
+- [Skeleton — UI Toolkit for Svelte + Tailwind](https://www.skeleton.dev/docs/get-started)
+
+```shell
+$ pnpm i -D @skeletonlabs/skeleton --filter=@apps/web
+$ cd apps/web
+$ npx svelte-add@latest tailwindcss
+$ cd ../..
+$ pnpm i
+```
+
+### Implement a responsive sidebar drawer
+
+- [Skeleton Blog — How to implement a responsive sidebar drawer](https://www.skeleton.dev/blog/how-to-implement-a-responsive-sidebar-drawer)
+
+- [blog-tutorials/responsive-sidebar-drawer at master · skeletonlabs/blog-tutorials](https://github.com/skeletonlabs/blog-tutorials/tree/master/responsive-sidebar-drawer?ref=skeleton.ghost.io)
+
+### Icons
+
+- [Download Font Awesome Free or Pro | Font Awesome](https://fontawesome.com/download)
+
+download `fontawesome-free-6.4.2-web.zip` from above
+extract it and copy `fontawesome-free-6.4.2-web` folder contents to `apps/web/static/font-awesome`
+
+- `app.html`
+
+get this snippet from source code of `view-source:https://www.skeleton.dev/elements/buttons`
+
+```html
+...
+<button type="button" class="btn-icon variant-filled"><i class="fa-solid fa-skull"></i></button>
+...
+<link href="font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+<link href="font-awesome/css/brands.min.css" rel="stylesheet" />
+<link href="font-awesome/css/solid.min.css" rel="stylesheet" />
+...
+```
+
+## ERR_PNPM_MUSL  The current system uses the "MUSL" C standard library. Node.js currently has prebuilt artifacts only for the "glibc" libc, so we can install Node.js only for glibc
+
+```shell
+$ pnpm docker:build
+ERR_PNPM_MUSL  The current system uses the "MUSL" C standard library. Node.js currently has prebuilt artifacts only for the "glibc" libc, so we can install Node.js only for glibc
+```

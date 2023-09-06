@@ -3,10 +3,16 @@
   // props
   export let data;
   // $: console.log(`data: [${JSON.stringify(data, undefined, 2)}]`);
+
+  const title = "Search PayloadCMS Media";
 </script>
 
-<div p-8>
-  <h1 class="text-2rem">Search Media</h1>
+<svelte:head>
+  <title>{title}</title>
+</svelte:head>
+
+<div class="p-8">
+  <h1 class="text-2rem">{title}</h1>
 
   <SearchForm />
 
@@ -20,7 +26,7 @@
 
   <ul>
     {#each data.docs as doc}
-      <li class="text-gray-400">{doc.name}</li>
+      <li>{doc.name}</li>
     {/each}
   </ul>
 </div>

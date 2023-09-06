@@ -1,5 +1,4 @@
 {
-  // "unocss.root": "apps/web",
   "files.exclude": {
     "@otherFiles": true
   },
@@ -11,13 +10,15 @@
     "dockerpush",
     "iconify",
     "koakh",
+    "materialdesign",
     "nonturbo",
     "payloadcms",
     "precompress",
+    "searchcms",
+    "skeletonlabs",
     "superjson",
     "sveltekit",
     "trpc",
-    "turborepo",
-    "unocss"
+    "turborepo"
   ]
 }

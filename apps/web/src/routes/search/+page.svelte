@@ -3,11 +3,16 @@
   // props
   export let data;
   // $: console.log(`data: [${JSON.stringify(data, undefined, 2)}]`);
+
+  const title = "Search Moke Data";
 </script>
 
+<svelte:head>
+  <title>{title}</title>
+</svelte:head>
 
-<div p-8>
-  <h1 class="text-2rem">Search</h1>
+<div class="p-8">
+  <h1 class="text-2rem">{title}</h1>
 
   <SearchForm />
 
@@ -21,7 +26,7 @@
 
   <ul>
     {#each data.products as product}
-      <li class="text-gray-400">{product.title}</li>
+      <li>{product.title}</li>
     {/each}
   </ul>
 </div>
