@@ -22,8 +22,8 @@
 ## Replace project and Domain
 
 - search `SvelteKitPayloadCMSWithTRPCAndTurboRepoStarter` and replace with your project Name/key
-- search `starterdomain.org` and replace with your domain url
 - search `svelte-kit-payload-cms-with-trpc-and-turbo-repo-starter` and replace with your project name
+- search `starterdomain.org` and replace with your domain url
 - search `koakh-laptop` and replace with your development machine hostname (useful to use local and remote development)
 - search `PAYLOAD_SECRET_STUB` and replace with your `PAYLOAD_SECRET`
 - rename `deploy/srv/docker/starterdomain` to your domain name
