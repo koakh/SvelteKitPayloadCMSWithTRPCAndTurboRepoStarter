@@ -4,5 +4,5 @@
 2023-07-27-01-07.tgz  apps/server/Dockerfile done done at last, a la turbo mode
 2023-07-28-01-47.tgz  final all docker images running flawless, finish with issue of 'You are not allowed to perform this action.'
 2023-08-02-17-53.tgz  final run in dev, run in docker, run in docker compose with web connected to server......before starts to clean code
-2023-08-07-23-07.tgz  before start clean code
+2023-08-07-23-07.tgz  before start clean code, OLD VERSION that works and don't have the annoying error `ERR_PNPM_MUSL  The current system uses the "MUSL" C standard library. Node.js currently has prebuilt artifacts only for the "glibc" libc, so we can install Node.js only for glibc`
 2023-08-10-22-44.tgz  finished project, before remove all things unocss and integrate skeleton ui 

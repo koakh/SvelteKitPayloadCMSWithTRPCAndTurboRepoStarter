@@ -439,6 +439,20 @@ I'm able to work around it either by setting `DOCKER_DEFAULT_PLATFORM=linux/amd6
 
 final: builded `arm64` image on oracle server, with same `pnpm docker:build` as used in `amd64`
 
+```shell
+# enter oracle server
+$ ssh ubuntu@simiromba.org -i ~/.ssh/oracle-ssh-key-2022-01-06.key
+# git clone
+$ git clone https://github.com/koakh/SvelteKitPayloadCMSWithTRPCAndTurboRepoStarter.git
+$ cd SvelteKitPayloadCMSWithTRPCAndTurboRepoStarter/
+# opt for node version
+$ nvm i v18.16.0
+# install deps
+$ pnpm i
+# build image
+$ pnpm docker:build
+```
+
 ## Fix UnoCSS VsCode Extension with Svelte 4.x.x
 
 - [unocss](https://github.com/unocss/unocss)
@@ -513,5 +527,43 @@ get this snippet from source code of `view-source:https://www.skeleton.dev/eleme
 
 ```shell
 $ pnpm docker:build
-ERR_PNPM_MUSL  The current system uses the "MUSL" C standard library. Node.js currently has prebuilt artifacts only for the "glibc" libc, so we can install Node.js only for glibc
+...
+ => [web installer  7/12] COPY --from=builder /app/out/full/ .                                                                                                                       0.6s
+ => [web installer  8/12] COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml                                                                                               0.0s
+ => ERROR [web installer  9/12] RUN pnpm install                                                                                                                                     0.9s
+------
+ > [web installer  9/12] RUN pnpm install:
+0.828 Scope: all 4 workspace projects
+0.889 Fetching Node.js 18.16.0 ...
+0.891  ERR_PNPM_MUSL  The current system uses the "MUSL" C standard library. Node.js currently has prebuilt artifacts only for the "glibc" libc, so we can install Node.js only for glibc
+------
+failed to solve: process "/bin/sh -c pnpm install" did not complete successfully: exit code: 1
+```
+
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+
+--no-cache
+
+```shell
+# KO
+$ cat .npmrc
+auto-install-peers=true
+engine-strict=true
+use-node-version=18.16.0
+
+# OK
+$ cat .npmrc
+auto-install-peers=true
+```
+
+> when add `use-node-version=18.16.0` error appears
+
+fixed commented line in `.npmrc`
+
+```conf
+auto-install-peers=true
+engine-strict=true
+; pnpm docker:build : this will fire `ERR_PNPM_MUSL  The current system uses the "MUSL" C standard library. Node.js currently has prebuilt artifacts only for the "glibc" libc, so we can install Node.js only for glibc
+; use-node-version=18.16.0
+
 ```
